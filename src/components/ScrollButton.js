@@ -14,7 +14,7 @@ export default function ScrollButton() {
   return (
     <button
       className={height > 100 ? "scroll-btn show-scroll-btn" : "scroll-btn"}
-      onclick={scrollBackToTop}
+      onClick={scrollBackToTop}
     >
       <FaAngleDoubleUp></FaAngleDoubleUp>
     </button>

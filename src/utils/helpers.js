@@ -5,7 +5,7 @@
 export function flattenProducts(data) {
     return data.map(item=>{
 
-        let image = item.image.url;
+        let image = (item.image && item.image.url) || null;
 
         //let image = `${url}${item.image.url}`;
 
