@@ -11,6 +11,14 @@ function getUserFromLocalStorage() {
 export default function UserProvider({ children }) {
   //   const [user, setUser] = useState({ username: null, token: null });
   const [user, setUser] = useState(getUserFromLocalStorage);
+  const [height, setHeight] = useState(0);
+
+  React.useEffect(()=>{
+    window.addEventListener("scroll",()=>{
+      setHeight(window.pageYOffset);
+    });
+    return () => window.removeEventListener("scroll",()=>{})
+  })
 
   const userLogin = (user) => {
     setUser(user);
@@ -32,5 +40,5 @@ export default function UserProvider({ children }) {
       setAlert({...alert, show:false});
   }
 
-  return <UserContext.Provider value={{user, userLogin, userLogout, alert, showAlert, hideAlert}}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={{user, userLogin, userLogout, alert, showAlert, hideAlert, height}}>{children}</UserContext.Provider>;
 }
